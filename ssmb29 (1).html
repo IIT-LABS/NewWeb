@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innosoul - Innovating the Future</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            scroll-behavior: smooth;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            background-color: #1e1e1e;
+            color: #fff;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar .logo {
+            font-size: 32px;
+            font-weight: 600;
+            color: #00b3e3;
+        }
+
+        .navbar ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .navbar ul li a:hover {
+            color: #00b3e3;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+            padding-top: 80px; /* To account for fixed navbar */
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Ensure the video is in the background */
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Overlay with semi-transparent black */
+            z-index: 1; /* Ensure overlay is above the video */
+        }
+
+        .hero h1 {
+            font-size: 50px;
+            font-weight: 600;
+            max-width: 700px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .hero .value-prop {
+            font-style: italic;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 30px;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .services h2 {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 40px;
+        }
+
+        .service-cards {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .service-card {
+            background-color: #f0f0f0;
+            padding: 30px;
+            width: 280px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+
+        .service-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Careers Section */
+        .careers {
+            padding: 80px 30px;
+            background-color: #e8f8fb;
+            text-align: center;
+        }
+
+        .careers h2 {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 40px;
+        }
+
+        .careers p {
+            font-size: 20px;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 40px;
+        }
+
+        .cta-button-careers {
+            background-color: #00b3e3;
+            color: #fff;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button-careers:hover {
+            background-color: #0086a3;
+        }
+
+        /* Resume Section */
+        .resume {
+            padding: 80px 30px;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+
+        .resume h2 {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 40px;
+        }
+
+        .resume p {
+            font-size: 20px;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .cta-button-resume {
+            background-color: #00b3e3;
+            color: #fff;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button-resume:hover {
+            background-color: #0086a3;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 30px;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 40px;
+        }
+
+        .contact p {
+            font-size: 20px;
+            color: #555;
+        }
+
+        /* Footer Section */
+        .footer {
+            background-color: #1e1e1e;
+            color: #fff;
+            text-align: center;
+            padding: 40px 30px;
+        }
+
+        .footer p {
+            font-size: 16px;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .services h2 {
+                font-size: 30px;
+            }
+
+            .service-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .service-card {
+                width: 90%;
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">Innosoul</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Solutions</a></li>
+            <li><a href="#careers">Careers</a></li>
+            <li><a href="#resume">Resume</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background">
+            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/BadB1z-V_qU?autoplay=1&mute=1&loop=1&playlist=BadB1z-V_qU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+
+        <div class="hero-overlay"></div>
+
+        <div>
+            <h1>Transforming Your Business with Innovative Solutions</h1>
+            <p>We provide cutting-edge technology and solutions that drive growth and operational efficiency.</p>
+            <p class="value-prop">Innovation is the ability to see change as an opportunity – not a threat.</p>
+            <a href="#services" class="cta-button">Explore Our Solutions</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <h2>Our Expertise</h2>
+        <div class="service-cards">
+            <div class="service-card">
+                <h3>Cloud Computing</h3>
+                <p>Scalable, secure, and cost-efficient cloud solutions tailored to your business needs.</p>
+            </div>
+            <div class="service-card">
+                <h3>Artificial Intelligence</h3>
+                <p>Transform your business using data-driven AI insights to optimize processes and performance.</p>
+            </div>
+            <div class="service-card">
+                <h3>Software Development</h3>
+                <p>Custom applications built with the latest technologies to ensure maximum efficiency and growth.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Careers Section -->
+    <section class="careers" id="careers">
+        <h2>Join Our Team</h2>
+        <p>At Innosoul, we're passionate about innovation and collaboration. Join us to work on cutting-edge solutions and build a better future together.</p>
+        <a href="#contact" class="cta-button-careers">Explore Careers</a>
+    </section>
+
+    <!-- Resume Section -->
+    <section class="resume" id="resume">
+        <h2>Explore Our Resume</h2>
+        <div id="resume-content">
+            <p>At Innosoul, we are constantly evolving and growing. Our resume reflects our ongoing success in transforming industries and embracing technological advances.</p>
+            <a href="javascript:void(0);" class="cta-button-resume" onclick="showLoginForm()">Login to View Resume</a>
+        </div>
+
+        <!-- Login Form (Initially hidden) -->
+        <div id="login-form" style="display: none;">
+            <h3>Login to Access Resume</h3>
+            <form id="login-form-content" onsubmit="handleLogin(event)">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required><br>
+                
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required><br>
+                
+                <button type="submit">Login</button>
+            </form>
+            <p id="error-message" style="color: red; display: none;">Invalid credentials. Please try again.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2>Contact Us</h2>
+        <p>If you have any questions or want to discuss how we can help your business grow, feel free to reach out to us.</p>
+        <p>Email: info@innosoul.com</p>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <p>&copy; 2025 Innosoul. All Rights Reserved.</p>
+    </footer>
+    <script>
+        // Function to show the login form when the user clicks on "Login to View Resume"
+        function showLoginForm() {
+            document.getElementById("resume-content").style.display = "none";
+            document.getElementById("login-form").style.display = "block";
+        }
+
+        // Function to handle the login process
+        function handleLogin(event) {
+            event.preventDefault(); // Prevent form submission
+
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // Check if the credentials match
+            if (username === "ssmb29@gmail.com" && password === "mahesh29") {
+                // Successful login
+                document.getElementById("login-form").style.display = "none";
+                showResumeContent(); // Function to display the resume content
+            } else {
+                // Invalid login
+                document.getElementById("error-message").style.display = "block";
+            }
+        }
+
+        // Function to show the full resume content after successful login
+        function showResumeContent() {
+            // Updated resume content with job-related buttons
+            const resumeContent = `
+                <h3>Resume Shortlisting</h3>
+                <p>Welcome! You are now logged in and can access the resume shortlisting.</p>
+
+                <div class="resume-buttons">
+                    <button class="cta-button-resume" onclick="showInputFields()">Enter Job Details</button>
+                    <button class="cta-button-resume" onclick="analyzeResume()">Analyze Resume Shortlisting</button>
+                </div>
+
+                <!-- Input Field for Job ID -->
+                <div id="job-id-field" style="display: none;">
+                    <label for="input-job-id">Enter Job ID:</label>
+                    <input type="text" id="input-job-id" placeholder="Job ID"><br><br>
+                </div>
+
+                <div id="analyze-result" style="display: none;">
+                    <p>Analyzing the job... We are assessing your qualifications and matching them with the best opportunities.</p>
+                </div>
+            `;
+
+            const resumeSection = document.getElementById("resume-content");
+            resumeSection.innerHTML = resumeContent;
+            resumeSection.style.display = "block"; // Show the resume content
+        }
+
+        // Function to show input field (Job ID)
+        function showInputFields() {
+            document.getElementById("job-id-field").style.display = "block";
+        }
+
+        // Function to analyze the resume for shortlisting
+        function analyzeResume() {
+            const jobId = document.getElementById("input-job-id").value;
+
+            // Example analysis logic: Displaying entered data for now
+            const analysisResult = `
+                <h4>Analysis Results:</h4>
+                <p><strong>Job ID:</strong> ${jobId}</p>
+                <p>Analysis Complete. You may need to customize this logic to suit your needs.</p>
+            `;
+
+            document.getElementById("analyze-result").innerHTML = analysisResult;
+            document.getElementById("analyze-result").style.display = "block";
+        }
+    </script>
+</body>
+</html>
